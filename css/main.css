@@ -1,0 +1,17 @@
+.book-cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.card{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 2px 2px 12px #aaa;
+}
+.card h2{
+    font-size: 1.5em;
+}
+.card p {
+    margin: 5px 0;
+}

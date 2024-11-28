@@ -25,11 +25,15 @@ function addBooksToLibrary(title, author, pages, isread) {
 
 
 }
+function removeBook(index){
+    myLibrary.splice(index,1)
+    displayBook();
+}
 
 function displayBook() {
     const bookcards = document.querySelector('.book-cards');
     bookcards.innerHTML = '';
-    myLibrary.forEach((book) => {
+    myLibrary.forEach((book, index) => {
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
@@ -37,11 +41,15 @@ function displayBook() {
     <p><strong> Author:</strong> ${book.author}</p>
     <p><strong> Pages:</strong> ${book.pages}</p>
     <p><strong> Read:</strong> ${book.isread ? 'yes' : 'No'}</p>
-    `;
+    <button onclick = 'removeBook(${index})'> Remove </button>
+    <button onclick = 'toggleReadStatus(${index})'> Change Read Status </button>
+     `;
         bookcards.appendChild(card);
 
     })
 }
+
+
 
 // modal Functionality
 
@@ -69,10 +77,10 @@ document.querySelector('#newBookForm').addEventListener('submit', function(e){
     const pages = document.querySelector('#pages').value;
     const isread = document.querySelector('#read').checked;
 
-    addBooksToLibrary(title,author,pages, isread)
+    addBooksToLibrary(title,author,pages, isread);
 
-    document.querySelector('newBookForm').reset();
-    modal.style.display ='none'
+    document.querySelector('#newBookForm').reset();
+    modal.style.display ='none';
 
 
 })

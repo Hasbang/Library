@@ -22,25 +22,57 @@ function addBooksToLibrary(title, author, pages, isread) {
     // call diplay function
 
     displayBook();
-    
+
 
 }
 
-function displayBook(){
+function displayBook() {
     const bookcards = document.querySelector('.book-cards');
-    //  bookcards.innerHTML = '';
+    bookcards.innerHTML = '';
     myLibrary.forEach((book) => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
     <h2>${book.title}</h2>
     <p><strong> Author:</strong> ${book.author}</p>
     <p><strong> Pages:</strong> ${book.pages}</p>
     <p><strong> Read:</strong> ${book.isread ? 'yes' : 'No'}</p>
     `;
-    bookcards.appendChild(card);
+        bookcards.appendChild(card);
 
-})
+    })
 }
 
-addBooksToLibrary('Book One', 'John Doe', 231 , )
+// modal Functionality
+
+const btn = document.querySelector('#newBook-btn');
+const modal = document.querySelector('#newBookModal')
+const span = document.querySelector('.close')
+
+btn.onclick = function(){
+    modal.style.display = 'block';
+};
+span.onclick = function(){
+    modal.style.display = 'none'
+};
+
+window.onclick = function(e){
+  if(e.target == modal){
+    modal.style.diplay= 'none'
+  }
+}
+
+document.querySelector('#newBookForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const pages = document.querySelector('#pages').value;
+    const isread = document.querySelector('#read').checked;
+
+    addBooksToLibrary(title,author,pages, isread)
+
+    document.querySelector('newBookForm').reset();
+    modal.style.display ='none'
+
+
+})

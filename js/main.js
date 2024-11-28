@@ -30,6 +30,11 @@ function removeBook(index){
     displayBook();
 }
 
+function toggleReadStatus(index){
+    myLibrary[index].isread = !myLibrary[index].isread;
+    displayBook();
+}
+
 function displayBook() {
     const bookcards = document.querySelector('.book-cards');
     bookcards.innerHTML = '';

@@ -26,7 +26,7 @@ function addBooksToLibrary(title, author, pages, isread) {
 
 }
 function removeBook(index){
-    myLibrary.splice(index,1)
+    myLibrary.splice(index,1);
     displayBook();
 }
 
